@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NoticeMng">
+	<typeAlias alias="noticeVO" type="egovframework.com.noticeMng.NoticeVO"/>
+	<update id="noticeDAO.updateReadTimeForNewMark" parameterClass="noticeVO" >
+			MERGE INTO NOTICE_MNG_COUNTER S
+			USING (SELECT #taskManageUserId# AS UNIQ_ID ,#taskId# AS MNG_UNIQ_ID FROM dual) D
+			ON (D.MNG_UNIQ_ID = S.MNG_UNIQ_ID AND D.UNIQ_ID = S.UNIQ_ID AND S.UNIQ_ID IS NOT NULL)
+			WHEN MATCHED THEN
+			UPDATE 
+			SET
+				CONTER_FLAG = 	'user',
+				LAST_UPDUSR_PNTTM = SYSDATE
+			WHEN NOT MATCHED THEN
+			INSERT
+			(
+				MNG_UNIQ_ID,
+				CONTER_FLAG,
+				LAST_UPDUSR_PNTTM,
+				UNIQ_ID
+			)
+			VALUES
+			(
+				#taskId#,
+				'user',
+				SYSDATE,
+				#taskManageUserId#
+			)	
+	</update>
+	
+	<update id="noticeDAO.updateTimeOfContent" parameterClass="noticeVO" >
+		MERGE INTO NOTICE_MNG_COUNTER S
+			USING (SELECT #taskId# AS MNG_UNIQ_ID from dual) D
+			ON (D.MNG_UNIQ_ID = S.MNG_UNIQ_ID AND S.UNIQ_ID IS NULL AND CONTER_FLAG = 'contents')
+			WHEN MATCHED THEN
+			UPDATE 
+			SET
+				LAST_UPDUSR_PNTTM = sysdate
+			WHEN NOT MATCHED THEN
+			INSERT
+			(
+				MNG_UNIQ_ID,
+				CONTER_FLAG,
+				LAST_UPDUSR_PNTTM
+			)
+			VALUES
+			(
+				#taskId#,
+				'contents',
+				SYSDATE
+			)	
+	</update>
+</sqlMap>
