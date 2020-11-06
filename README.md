@@ -44,6 +44,9 @@
   ```
 + 목록 조회 쿼리
   + new마커 표시 쿼리 추가
+  + _E.MNG_UNIQ_ID_ : 해당 게시글 PK
+  + _E.MNG_EDIT_DATE_ : 해당 게시글 최종 수정일
+  + _taskManageUserId_ : 사용자 PK값
   ```sql
   CASE WHEN 
   NVL((select 
