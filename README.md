@@ -1,51 +1,52 @@
 # noticeMng
 
-# excelManage
+# ÏÇ¨Ïö©Î∞©Î≤ï
 
-# ªÁøÎπÊπ˝
-
-### ¿˚øÎ¿˝¬˜
-+ ªÛºº∆‰¿Ã¡ˆ¡∂»∏ ƒ¡∆Æ∑—∑Ø
-  + æÓ≥Î≈◊¿Ãº« π◊ ∆ƒ∂ÛπÃ≈Õ √ﬂ∞°
+### Ï†ÅÏö©Ï†àÏ∞®
++ ÏÉÅÏÑ∏ÌéòÏù¥ÏßÄÏ°∞Ìöå Ïª®Ìä∏Î°§Îü¨
+  + Ïñ¥ÎÖ∏ÌÖåÏù¥ÏÖò Î∞è ÌååÎùºÎØ∏ÌÑ∞ Ï∂îÍ∞Ä
   + @NoticeInsertAnnotation
   + @ModelAttribute("noticeVO") NoticeVO noticeVO 
-  + **taskId**¥¬ æ˜π´ PK∞™, **taskManageUserId**¥¬ ªÁøÎ¿⁄ PK∞™
-  > øπ¡¶
+  + **taskId**Îäî ÏóÖÎ¨¥ PKÍ∞í, **taskManageUserId**Îäî ÏÇ¨Ïö©Ïûê PKÍ∞í
+  > ÏòàÏ†ú
   ```java
   
     @NoticeInsertAnnotation
 	@RequestMapping("/maintenance/selectTaskMngView.do")
 	public String SelectTaskMngView(@ModelAttribute("maintenanceVO") MaintenanceVO maintenanceVO, 
-			@ModelAttribute("noticeVO") NoticeVO noticeVO 	,//new∏∂≈© «•Ω√∏¶ ¿ß«— √≥∏Æ
+			@ModelAttribute("noticeVO") NoticeVO noticeVO 	,//newÎßàÌÅ¨ ÌëúÏãúÎ•º ÏúÑÌïú Ï≤òÎ¶¨
 			ModelMap model) throws Exception {
       
-      ...æ˜π´«¡∑ŒººΩ∫...
+      ...ÏóÖÎ¨¥ÌîÑÎ°úÏÑ∏Ïä§...
       
       
       };
    ```
    
-+ new «•Ω√ ∞ªΩ≈ ƒ¡∆Æ∑—∑Ø
-  + æÓ≥Î≈◊¿Ãº« π◊ ∆ƒ∂ÛπÃ≈Õ √ﬂ∞°
-  + @@NoticeUpdateTimeOfContentAnnotation
++ new ÌëúÏãú Í∞±Ïã† Ïª®Ìä∏Î°§Îü¨
+  + Ïñ¥ÎÖ∏ÌÖåÏù¥ÏÖò Î∞è ÌååÎùºÎØ∏ÌÑ∞ Ï∂îÍ∞Ä
+  + @NoticeUpdateTimeOfContentAnnotation
   + @ModelAttribute("noticeVO") NoticeVO noticeVO 	
-  + **taskId**¥¬ æ˜π´ PK∞™, **taskManageUserId**¥¬ ªÁøÎ¿⁄ PK∞™
-  > øπ¡¶
+  + **taskId**Îäî ÏóÖÎ¨¥ PKÍ∞í, **taskManageUserId**Îäî ÏÇ¨Ïö©Ïûê PKÍ∞í
+  > ÏòàÏ†ú
   ```java
-  //æ˜π´ºˆ¡§√≥∏Æ
-	@NoticeUpdateTimeOfContentAnnotation //new∏∂≈© «•Ω√∏¶ ¿ß«— √≥∏Æ
+  //ÏóÖÎ¨¥ÏàòÏ†ïÏ≤òÎ¶¨
+	@NoticeUpdateTimeOfContentAnnotation //newÎßàÌÅ¨ ÌëúÏãúÎ•º ÏúÑÌïú Ï≤òÎ¶¨
 	@RequestMapping("/maintenance/updateTaskMngEditProc.do")
 	public String UpdateTaskMngEditProc(@ModelAttribute("maintenanceVO") MaintenanceVO maintenanceVO, 
-			@ModelAttribute("noticeVO") NoticeVO noticeVO 	,//new∏∂≈© «•Ω√∏¶ ¿ß«— √≥∏Æ
+			@ModelAttribute("noticeVO") NoticeVO noticeVO 	,//newÎßàÌÅ¨ ÌëúÏãúÎ•º ÏúÑÌïú Ï≤òÎ¶¨
 			ModelMap model, EmplyrVo emplyrVO) throws Exception {
       
-        ...æ˜π´«¡∑ŒººΩ∫...
+        ...ÏóÖÎ¨¥ÌîÑÎ°úÏÑ∏Ïä§...
       
       };
   
   ```
-+ ∏Ò∑œ ¡∂»∏ ƒı∏Æ
-  + new∏∂ƒø «•Ω√ ƒı∏Æ √ﬂ∞°
++ Î™©Î°ù Ï°∞Ìöå ÏøºÎ¶¨
+  + newÎßàÏª§ ÌëúÏãú ÏøºÎ¶¨ Ï∂îÍ∞Ä
+  + _E.MNG_UNIQ_ID_ : Ìï¥Îãπ Í≤åÏãúÍ∏Ä PK
+  + _E.MNG_EDIT_DATE_ : Ìï¥Îãπ Í≤åÏãúÍ∏Ä ÏµúÏ¢Ö ÏàòÏ†ïÏùº
+  + _taskManageUserId_ : ÏÇ¨Ïö©Ïûê PKÍ∞í
   ```sql
   CASE WHEN 
   NVL((select 
@@ -54,7 +55,7 @@
     NOTICE_MNG_COUNTER C 
   where 
     C.CONTER_FLAG = 'contents' AND C.MNG_UNIQ_ID = E.MNG_UNIQ_ID
-  ),E.MNG_EDIT_DATE) 																		/*«ÿ¥Á±€ √÷¡æ ºˆ¡§¿œ(¥Ò±€ ∆˜«‘)*/
+  ),E.MNG_EDIT_DATE) 																		/*Ìï¥ÎãπÍ∏Ä ÏµúÏ¢Ö ÏàòÏ†ïÏùº(ÎåìÍ∏Ä Ìè¨Ìï®)*/
    >
           NVL(
           (select 
@@ -63,7 +64,7 @@
             NOTICE_MNG_COUNTER C 
           where 
             C.CONTER_FLAG = 'user' AND C.MNG_UNIQ_ID = E.MNG_UNIQ_ID AND C.UNIQ_ID = #taskManageUserId# AND ROWNUM = 1
-  ),TO_DATE ('20000101','YYYYMMDD'))  																		/*«ÿ¥Á±€ √÷¡æ »Æ¿Œ¿œ*/
+  ),TO_DATE ('20000101','YYYYMMDD'))  																		/*Ìï¥ÎãπÍ∏Ä ÏµúÏ¢Ö ÌôïÏù∏Ïùº*/
           THEN 'new'
              ELSE 'old' END
           AS NEW_MARK 
