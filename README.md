@@ -25,7 +25,7 @@
    
 + new 표시 갱신 컨트롤러
   + 어노테이션 및 파라미터 추가
-  + @@NoticeUpdateTimeOfContentAnnotation
+  + @NoticeUpdateTimeOfContentAnnotation
   + @ModelAttribute("noticeVO") NoticeVO noticeVO 	
   + **taskId**는 업무 PK값, **taskManageUserId**는 사용자 PK값
   > 예제
